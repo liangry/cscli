@@ -45,6 +45,13 @@ var tagValidator = func(cmd *cobra.Command, args []string) error {
 	return nil
 }
 
+var defaultGroupProtector = func(cmd *cobra.Command, args []string) error {
+	if groupName == "default" {
+		return errors.New("Default group cannot be overwritten")
+	}
+	return nil
+}
+
 func init() {
 	rootCmd.AddCommand(groupCmd)
 }

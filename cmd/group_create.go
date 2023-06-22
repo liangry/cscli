@@ -27,6 +27,7 @@ group create: Create a named agent group
 	`,
 	Aliases: []string{"cr", "cre", "crea", "creac", "creat"},
 	Args: tagValidator,
+	PreRunE: defaultGroupProtector,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		reqBody := configserverproto.CreateAgentGroupRequest{}
 		reqBody.RequestId = uuid.New().String()

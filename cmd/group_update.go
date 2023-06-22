@@ -27,6 +27,7 @@ group update: Update agent group
 	`,
 	Aliases: []string{"u", "up", "upd", "upda", "updat"},
 	Args: tagValidator,
+	PreRunE: defaultGroupProtector,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		reqBody := configserverproto.UpdateAgentGroupRequest{}
 		reqBody.RequestId = uuid.New().String()

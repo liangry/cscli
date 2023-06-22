@@ -27,6 +27,7 @@ group delete: Delete an agent group by name
 	`,
 	Aliases: []string{"d", "de", "del", "dele", "delet"},
 	Args: cobra.NoArgs,
+	PreRunE: defaultGroupProtector,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		reqBody := configserverproto.DeleteAgentGroupRequest{}
 		reqBody.RequestId = uuid.New().String()

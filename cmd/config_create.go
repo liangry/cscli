@@ -25,7 +25,7 @@ var configCreateCmd = &cobra.Command{
 
 config create: Create a named configuration in yaml format
 	`,
-	Aliases: []string{"cr", "cre", "crea", "creac", "creat"},
+	Aliases: []string{"c", "cr", "cre", "crea", "creac", "creat"},
 	Args: cobra.NoArgs,
 	PreRunE: validateConfig,
 	RunE: func(cmd *cobra.Command, args []string) error {

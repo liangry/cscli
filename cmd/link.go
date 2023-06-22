@@ -15,6 +15,7 @@ var linkCmd = &cobra.Command{
 
 link: Collection of association between agent group and configuration
 	`,
+	Aliases: []string{"l", "li", "lin"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return cmd.Usage()
 	},

@@ -17,6 +17,7 @@ var groupCmd = &cobra.Command{
 
 group: Collection of agent group
 	`,
+	Aliases: []string{"g", "gr", "gro", "grou"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return cmd.Usage()
 	},
@@ -28,6 +29,18 @@ var description string
 var tagValidator = func(cmd *cobra.Command, args []string) error {
 	if len(args) % 2 != 0 {
 		return errors.New("Tags must appear in pairs")
+	}
+	if len(args) == 0 {
+		return errors.New("User defined agent group must have at least one tag")
+	}
+	m := make(map[string]bool)
+	for i := 0; i < len(args); i += 2 {
+		tag := args[i]
+		if m[tag] {
+			return errors.New("Duplicate tag " + tag)
+		} else {
+			m[tag] = true
+		}
 	}
 	return nil
 }
